@@ -1,0 +1,40 @@
+Program: D-Flip Flop
+module d_flip_flop(clk, rst, D, q);
+input clk;
+input rst;
+input D;
+output reg q;
+always @(posedge clk or posedge rst)
+begin
+if(rst)
+  q = 1'b0;
+else
+  q = D;
+end
+endmodule
+
+// D-Flip-Flop Test Bench:
+module tb_D-flip-flop;
+reg clk;
+reg rst;
+reg D;
+wire q;
+D-flip-flop uut(
+    .clk(clk),
+    .rst(rst),
+    .D(D),
+    .q(q)
+);
+initial begin
+clk = 1'b0;
+rst = 1;
+D = 0;
+#100;
+rst = 1'b0;
+D = 1;
+#100;
+D = 0;
+end
+always
+#10 clk = ~clk;
+endmodule
