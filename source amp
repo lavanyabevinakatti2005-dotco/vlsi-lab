@@ -1,0 +1,6 @@
+.include C:\Electric\cs_models.txt
+Vdd Vdd 0 DC 5
+Vin Vin 0 sin(0.85 0.05 1k 0 0 0 50)
+.dc Vin 0 5 0.1
+*.tran 0 5m
+.end
