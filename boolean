@@ -1,0 +1,17 @@
+* Power Supply
+Vdd Vdd 0 DC 5
+
+* Input Signals (Piecewise Linear)
+Va A 0 dc pwl 10n 0 20n 5 50n 5 60n 0 90n 0 100n 5
+Vb B 0 dc pwl 10n 0 20n 5 100n 5 110n 0
+Vc C 0 dc pwl 20n 0 50n 5 120n 5 150n 0
+Vd D 0 dc pwl 50n 0 70n 5 150n 5 180n 0
+Ve E 0 dc pwl 70n 0 80n 5 140n 5 190n 0
+
+* Measurement Commands
+.measure tran tf trig v(out) val=4.5 fall=1 td=4ns
++ targ v(out) val=0.5 fall=1
+
+* Analysis and Library Includes
+.tran 200n
+.include C:/C5-models.txt
