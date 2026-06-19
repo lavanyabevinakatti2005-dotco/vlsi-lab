@@ -1,0 +1,6 @@
+.include c:\Electric\c5_models.txt
+Vdd vdd 0 dc 5
+Vin vin 0 pulse (0 5 0ns 1ps 1ps 1ns 2ns 10)
+.dc Vin 0 5 1m
+*.trans 0.5ns 20ns
+.END
