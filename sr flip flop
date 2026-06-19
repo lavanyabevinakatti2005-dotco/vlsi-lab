@@ -1,0 +1,51 @@
+c) SR flip flop:
+module SR_flip_flop(clk, rst, S, R, Q);
+input clk;
+input rst;
+input S;
+input R;
+output reg Q;
+always @(posedge clk or posedge rst)
+begin
+if(rst)
+  Q <= 2'b00;
+else
+  begin
+  case({S,R})
+  2'b00 : Q <= Q;
+  2'b01 : Q <= 0;
+  2'b10 : Q <= 1;
+  2'b11 : Q <= 1'bx;
+  endcase
+  end
+endmodule
+
+SR-flip-flop Test bench:
+module tb_SR_flip-flop;
+reg clk;
+reg rst;
+reg S;
+reg R;
+wire Q;
+SR-flip-flop uut(
+    .clk(clk),
+    .rst(rst),
+    .S(S),
+    .R(R),
+    .Q(Q)
+);
+initial begin
+clk = 0;
+rst = 0;
+S = 0;
+R = 0;
+#100;
+S = 0; R = 1;
+#100;
+S = 1; R = 0;
+#100;
+S = 1; R = 1; $finish;
+end
+always
+#10 clk = ~clk;
+endmodule
